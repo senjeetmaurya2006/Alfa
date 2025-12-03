@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjeet Maurya — Developer & Data Analyst</title>
+    <meta name="description" content="Portfolio of Sanjeet Maurya, a Web Developer & Data Analyst specializing in ML, Data Science, and modern web apps.">
+    <meta property="og:title" content="Sanjeet Maurya — Developer & Data Analyst">
+    <meta property="og:description" content="Portfolio of Sanjeet Maurya, a Web Developer & Data Analyst">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sanjeetmaurya.com">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#f43f5e',
+                    },
+                    fontFamily: {
+                        space: ['Space Grotesk', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sanjeet Maurya",
+        "jobTitle": "Web Developer & Data Analyst",
+        "url": "https://sanjeetmaurya.com",
+        "sameAs": [
+            "https://github.com/sanjeetmaurya",
+            "https://linkedin.com/in/sanjeetmaurya"
+        ]
+    }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-poppins overflow-x-hidden">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center">
+        <div class="relative">
+            <div class="w-24 h-24 border-4 border-primary rounded-full animate-spin border-t-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-16 h-16 border-4 border-secondary rounded-full animate-spin border-b-transparent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="hidden md:block fixed w-8 h-8 rounded-full bg-primary/20 border border-primary pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"></div>
+    <div id="cursor-follower" class="hidden md:block fixed w-4 h-4 rounded-full bg-primary pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-gray-900/80 backdrop-blur-md z-40 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-white flex items-center">
+                        <span class="text-primary">Sanjeet</span>
+                        <span class="text-secondary">Maurya</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-all nav-link">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-all nav-link">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-all nav-link">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition-all nav-link">Projects</a>
+                    <a href="#resume" class="text-gray-300 hover:text-white transition-all nav-link">Resume</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-all nav-link">Contact</a>
+                    <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
+                        <i data-feather="moon" class="hidden dark:block"></i>
+                        <i data-feather="sun" class="block dark:hidden"></i>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 backdrop-blur-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all">Projects</a>
+                <a href="#resume" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all">Resume</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 transition-all">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="mobile-theme-toggle" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">
+                        <i data-feather="moon" class="hidden dark:block mr-2"></i>
+                        <i data-feather="sun" class="block dark:hidden mr-2"></i>
+                        Toggle Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+
+    <!-- BACKGROUND -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#06060f] via-[#1a002e] to-[#06060f] opacity-95"></div>
+
+    <!-- Glass Layer -->
+    <div class="absolute inset-0 backdrop-blur-[3px]"></div>
+
+    <!-- Glow Orbs -->
+    <div class="absolute top-20 left-20 w-72 h-72 bg-primary/30 blur-[150px] rounded-full"></div>
+    <div class="absolute bottom-20 right-20 w-72 h-72 bg-secondary/30 blur-[150px] rounded-full"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="relative z-20 text-center px-6">
+
+        <!-- Small Intro Text -->
+        <p class="text-lg md:text-xl text-gray-300 tracking-widest uppercase mb-4 animate-fade-in">
+            Welcome to My World
+        </p>
+
+        <!-- BIG HEADING -->
+        <h1 class="font-space font-bold text-4xl sm:text-6xl md:text-7xl leading-tight mb-6
+                   bg-gradient-to-r from-primary via-pink-500 to-secondary bg-clip-text text-transparent
+                   drop-shadow-[0_0_35px_rgba(255,0,255,0.4)]
+                   animate-slide-down">
+            Hi, I'm Sanjeet Maurya
+        </h1>
+
+        <!-- SUB TITLE -->
+        <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-8 drop-shadow-[0_0_20px_rgba(0,0,0,0.8)] animate-slide-up">
+            Developer & Data Analyst
+        </h2>
+
+        <!-- PARAGRAPH -->
+        <p class="max-w-2xl mx-auto text-gray-200 text-lg sm:text-xl mb-12 leading-relaxed drop-shadow-[0_0_15px_rgba(0,0,0,1)]
+                  animate-fade-in-up">
+            I build powerful digital experiences and intelligent data-driven solutions with a mix of
+            creativity, technology and clean UI engineering.
+        </p>
+
+        <!-- BUTTONS -->
+        <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up">
+            
+            <a href="#projects"
+                class="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-semibold 
+                       shadow-xl shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-1 transition-all">
+                View Projects
+            </a>
+
+            <a href="#resume"
+                class="px-8 py-3 text-primary border-2 border-primary rounded-full text-lg font-semibold
+                       hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1">
+                Download Resume
+            </a>
+
+            <a href="#contact"
+                class="px-8 py-3 text-secondary border-2 border-secondary rounded-full text-lg font-semibold
+                       hover:bg-secondary hover:text-white transition-all transform hover:-translate-y-1">
+                Hire Me
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Scroll icon -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20">
+        <i data-feather="chevron-down" class="w-10 h-10 text-gray-300"></i>
+    </div>
+
+    <!-- Custom Animations -->
+    <style>
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .animate-slide-down { animation: slideDown 1.2s ease forwards; }
+        .animate-slide-up { animation: slideUp 1.2s ease forwards; }
+        .animate-fade-in-up { animation: fadeInUp 1.4s ease forwards; }
+        .animate-fade-in { animation: fadeIn 1.4s ease forwards; }
+    </style>
+
+</section>
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900/50 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 font-space">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">About Me</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full bg-gradient-to-r from-primary to-secondary p-1">
+                            <div class="w-full h-full rounded-full overflow-hidden bg-gray-800">
+                                <img src="https://avatars.githubusercontent.com/u/12345678" alt="Sanjeet Maurya" class="w-full h-full object-cover">
+</div>
+                        </div>
+                        <div class="absolute -inset-4 rounded-full border-4 border-primary/30 animate-pulse pointer-events-none"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">Who am I?</h3>
+                        <p class="text-gray-300 mb-6">
+                            I'm Sanjeet Maurya, a passionate Web Developer and Data Analyst currently pursuing my BCA (2025–2028) with specialization in Machine Learning & Data Science.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2 text-primary">My Mission</h4>
+                            <p class="text-gray-300 italic">
+                                "I create impactful web apps and intelligent digital systems. I focus on blending design, data, and technology."
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center">
+                                <i data-feather="book" class="w-5 h-5 mr-2 text-secondary"></i>
+                                <span class="text-gray-300">BCA (ML & Data Science)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="code" class="w-5 h-5 mr-2 text-secondary"></i>
+                                <span class="text-gray-300">Web Developer</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="bar-chart-2" class="w-5 h-5 mr-2 text-secondary"></i>
+                                <span class="text-gray-300">Data Analyst</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="briefcase" class="w-5 h-5 mr-2 text-secondary"></i>
+                                <span class="text-gray-300">Sales Assistant</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">
+                            My experience as a Sales Assistant has honed my communication skills and understanding of customer behavior. I bring a futuristic, raw, and confident approach to technology, with a focus on problem-solving, creativity, and analytical thinking.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-gradient-to-r from-primary to-secondary opacity-10 blur-3xl -mr-32 -mt-32"></div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 font-space">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">My Skills</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Combining technical expertise with analytical thinking</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Web Development Skills -->
+                <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <i data-feather="code" class="w-8 h-8 mr-3 text-primary"></i>
+                        <h3 class="text-2xl font-bold">Web Development</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">HTML</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">CSS</span>
+                                <span class="text-primary">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">JavaScript</span>
+                                <span class="text-primary">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Responsive Design</span>
+                                <span class="text-primary">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">UI/UX</span>
+                                <span class="text-primary">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Analytics Skills -->
+                <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <i data-feather="bar-chart-2" class="w-8 h-8 mr-3 text-secondary"></i>
+                        <h3 class="text-2xl font-bold">Data Analytics</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Python</span>
+                                <span class="text-secondary">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-secondary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Excel / MS Office</span>
+                                <span class="text-secondary">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-secondary h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Data Cleaning</span>
+                                <span class="text-secondary">82%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-secondary h-2.5 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Data Visualization</span>
+                                <span class="text-secondary">78%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-secondary h-2.5 rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">ML Basics</span>
+                                <span class="text-secondary">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-secondary h-2.5 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-gradient-to-r from-primary to-secondary opacity-10 blur-3xl -ml-32 -mb-32"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-900/50 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 font-space">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">My Projects</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">A selection of my recent work across web development and data analytics</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-lg transform transition-all hover:scale-105 hover:shadow-primary/20">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/1" alt="Multipurpose AI Tools Website" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Multipurpose AI Tools Website</h3>
+                        <p class="text-gray-300 mb-4">A comprehensive platform with 25+ AI tools including PDF converters, calculators, and more.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">JavaScript</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">API</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
+                            <a href="#" class="text-sm text-secondary hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-lg transform transition-all hover:scale-105 hover:shadow-primary/20">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/2" alt="Telegram File Saver Bot" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Telegram File Saver Bot</h3>
+                        <p class="text-gray-300 mb-4">A bot that saves files from Telegram to cloud storage with organization features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">Python</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">Telegram API</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">AWS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
+                            <a href="#" class="text-sm text-secondary hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-lg transform transition-all hover:scale-105 hover:shadow-primary/20">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/3" alt="Flirty AI Chatbot Bot" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Flirty AI Chatbot</h3>
+                        <p class="text-gray-300 mb-4">Advanced conversational AI with personality and contextual understanding.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">Python</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">NLP</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">Machine Learning</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
+                            <a href="#" class="text-sm text-secondary hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-lg transform transition-all hover:scale-105 hover:shadow-primary/20">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/4" alt="OSINT Phone Lookup Bot" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">OSINT Phone Lookup Bot</h3>
+                        <p class="text-gray-300 mb-4">A tool for gathering open-source intelligence about phone numbers.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">Python</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">OSINT</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">Web Scraping</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
+                            <a href="#" class="text-sm text-secondary hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-lg transform transition-all hover:scale-105 hover:shadow-primary/20">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/5" alt="Modern E-Commerce UI Clone" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Modern E-Commerce UI Clone</h3>
+                        <p class="text-gray-300 mb-4">A responsive e-commerce UI with modern design patterns and animations.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
+                            <a href="#" class="text-sm text-secondary hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-lg transform transition-all hover:scale-105 hover:shadow-primary/20">
+                    <div class="h-48 overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/6" alt="Portfolio Upgrade" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio v1 → v2 Upgrade</h3>
+                        <p class="text-gray-300 mb-4">Complete redesign and modernization of my personal portfolio website.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">JavaScript</span>
+                            <span class="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">GSAP</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm text-primary hover:underline">Live Demo</a>
+                            <a href="#" class="text-sm text-secondary hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-8 py-3 border-2 border-primary text-primary rounded-full font-medium hover:bg-primary/10 transition-all transform hover:-translate-y-1">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-gradient-to-r from-primary to-secondary opacity-10 blur-3xl -mr-32 -mt-32"></div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 font-space">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">My Resume</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">My professional journey and qualifications</p>
+            </div>
+            
+            <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg mb-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Sanjeet Maurya</h3>
+                        <p class="text-gray-300">Web Developer & Data Analyst</p>
+                    </div>
+                    <a href="#" class="mt-4 md:mt-0 px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-full font-medium text-white hover:shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
+                        Download Resume PDF
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Education -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-700 flex items-center">
+                            <i data-feather="book" class="w-5 h-5 mr-2 text-primary"></i>
+                            Education
+                        </h4>
+                        <div class="space-y-6">
+                            <div class="timeline-item pl-6 border-l-2 border-primary relative">
+                                <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                                <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary animate-ping opacity-40"></div>
+                                <h5 class="font-bold text-lg">Bachelor of Computer Applications</h5>
+                                <p class="text-gray-400">2025–2028</p>
+                                <p class="text-gray-300 mt-1">Specialization in Machine Learning & Data Science</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-700 flex items-center">
+                            <i data-feather="briefcase" class="w-5 h-5 mr-2 text-secondary"></i>
+                            Experience
+                        </h4>
+                        <div class="space-y-6">
+                            <div class="timeline-item pl-6 border-l-2 border-secondary relative">
+                                <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-secondary"></div>
+                                <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-secondary animate-ping opacity-40"></div>
+                                <h5 class="font-bold text-lg">Sales Assistant</h5>
+                                <p class="text-gray-400">Part-time</p>
+                                <p class="text-gray-300 mt-1">Developed strong communication skills and customer behavior understanding</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Summary -->
+                <div class="mt-12">
+                    <h4 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-700">Skills Summary</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>Data Cleaning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>Data Visualization</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>Excel</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>UI/UX</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="check" class="w-4 h-4 mr-2 text-primary"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Projects -->
+                <div class="mt-12">
+                    <h4 class="text-xl font-semibold mb-6 pb-2 border-b border-gray-700">Featured Projects</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all">
+                            <h5 class="font-bold text-primary">Multipurpose AI Tools Website</h5>
+                            <p class="text-sm text-gray-300">25+ tools including PDF converters, calculators, and more</p>
+                        </div>
+                        <div class="p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all">
+                            <h5 class="font-bold text-primary">Telegram File Saver Bot</h5>
+                            <p class="text-sm text-gray-300">Saves files from Telegram to cloud storage</p>
+                        </div>
+                        <div class="p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all">
+                            <h5 class="font-bold text-primary">Excel Sales Dashboard</h5>
+                            <p class="text-sm text-gray-300">Interactive dashboard for sales data analysis</p>
+                        </div>
+                        <div class="p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all">
+                            <h5 class="font-bold text-primary">Netflix Dataset Analysis</h5>
+                            <p class="text-sm text-gray-300">Python-based analysis of Netflix content trends</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-gradient-to-r from-primary to-secondary opacity-10 blur-3xl -ml-32 -mb-32"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900/50 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 font-space">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Get In Touch</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Have a project in mind or want to discuss opportunities? Feel free to reach out!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6">Contact Form</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-300 mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" required></textarea>
+                        </div>
+                        <button type="submit" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-full font-medium text-white hover:shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1 w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Contact Info</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i data-feather="mail" class="w-5 h-5 mt-1 mr-4 text-primary"></i>
+                                <div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <a href="mailto:contact@sanjeetmaurya.com" class="text-gray-300 hover:text-primary transition-all">contact@sanjeetmaurya.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="phone" class="w-5 h-5 mt-1 mr-4 text-primary"></i>
+                                <div>
+                                    <h4 class="font-semibold">Phone / WhatsApp</h4>
+                                    <a href="tel:+919876543210" class="text-gray-300 hover:text-primary transition-all">+91 98765 43210</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-4 text-primary"></i>
+                                <div>
+                                    <h4 class="font-semibold">Location</h4>
+                                    <p class="text-gray-300">India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Connect With Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="GitHub">
+                                <i data-feather="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all" aria-label="LinkedIn">
+                                <i data-feather="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all" aria-label="Twitter">
+                                <i data-feather="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all" aria-label="Instagram">
+                                <i data-feather="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-gradient-to-r from-primary to-secondary opacity-10 blur-3xl -mr-32 -mt-32"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/80 backdrop-blur-sm border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="text-primary">Sanjeet</span>
+                        <span class="text-secondary">Maurya</span>
+                    </h3>
+                    <p class="text-gray-400">Web Developer & Data Analyst specializing in creating impactful digital experiences and data-driven solutions.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-all">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition-all">About</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-primary transition-all">Skills</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-primary transition-all">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-all">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-all" aria-label="GitHub">
+                            <i data-feather="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition-all" aria-label="LinkedIn">
+                            <i data-feather="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-all" aria-label="Twitter">
+                            <i data-feather="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-pink-600 transition-all" aria-label="Instagram">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 Sanjeet Maurya. All rights reserved.</p>
+                <p class="mt-2">Made with <i data-feather="heart" class="w-4 h-4 inline text-secondary"></i> by Sanjeet Maurya</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-primary transition-all opacity-0 invisible transform translate-y-4">
+        <i data-feather="arrow-up" class="w-5 h-5"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+<!-- <script src="https://huggingface.co/deepsite/deepsite-badge.js"></script> -->
+</body>
+</html>
